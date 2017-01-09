@@ -28,5 +28,4 @@ class Book{
 				return s;
 			}
 };
-
 # endif

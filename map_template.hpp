@@ -11,7 +11,6 @@ template <class idType, class aType> class Map{
             idType key;
             aType* wsk;
 		};
-
 		node_t* head;
 		void clear(){
 				node_t * o, *temp;
@@ -21,7 +20,6 @@ template <class idType, class aType> class Map{
 					delete o;
 				}
 			}
-
         node_t* find(idType key) const{
 				node_t * o;
 				for(o = head; o != NULL; o = o->next){
@@ -35,7 +33,6 @@ template <class idType, class aType> class Map{
 				}
 				return o;
 			}
-			
         void swap(Map& t){
 				node_t* temp = t.head;
 				t.head = head;
@@ -71,8 +68,7 @@ template <class idType, class aType> class Map{
 			for(temp=t.head; temp != NULL; temp = temp->next){
 				insert(temp->key, *(temp->wsk));
 				}
-			}
-			
+			}		
         Map& operator = (const Map& t){
 				if (&t == this){
 					return *this;
@@ -81,17 +77,15 @@ template <class idType, class aType> class Map{
 				Map temp(t);
 				swap(temp);
 				return *this;
-			}
-			
+			}		
         ~Map(){
 			clear();
 			}
 			
-		aType& operator[](idType key) const{
+	aType& operator[](idType key) const{
 				return *(find(key)->wsk);
-			}
-			
-         friend std::ostream & operator <<( std::ostream & s, const Map& m){
+			}		
+        friend std::ostream & operator <<( std::ostream & s, const Map& m){
 				node_t * o;
 				for(o = m.head; o != NULL; o = o->next){
 					s << "key: " << std::setw(20) << o->key << std::setw(8) << 	"value: " << *(o->wsk) << std::endl;
@@ -99,5 +93,4 @@ template <class idType, class aType> class Map{
 				return s;
 			}
 };
-
 #endif 

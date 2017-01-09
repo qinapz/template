@@ -21,6 +21,4 @@ class Employee{
 				return s;
 			}
 };
-
-
 # endif
