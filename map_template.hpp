@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <stdexcept>
+#include <new>
 
 #ifndef map_template_hpp
 #define map_template_hpp
@@ -41,6 +42,7 @@ template <class idType, class aType> class Map{
 	public:
         void insert(idType key, aType value){
 				node_t* wsk = new node_t;
+				try{
 				aType* temp_obj = new aType; 
 				*temp_obj = value;
 				
@@ -52,7 +54,10 @@ template <class idType, class aType> class Map{
 					head = wsk;
 					return;
 				}
-
+				}
+				catch(const bad_alloc& e){
+					cerr << "BRAK DOSTEPNEJ PAMIECI " << e.what() << '\n';
+				}
 				node_t * temp;
 				for(temp = head; temp->next != NULL; temp=temp->next);
 				temp->next = wsk;
